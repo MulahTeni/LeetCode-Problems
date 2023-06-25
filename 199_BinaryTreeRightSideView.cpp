@@ -11,6 +11,30 @@
  */
 class Solution {
 public:
+    vector<int> rightSideView(TreeNode* root) {
+        if(!root)   return {};
+        vector<int> res;
+        queue<TreeNode*> q;
+        q.push(root);
+        while(!q.empty()){
+            int n = q.size();
+            TreeNode* tmp=NULL;
+            while(n--){
+                tmp = q.front();
+                q.pop();
+                if(tmp->left)   q.push(tmp->left);
+                if(tmp->right)  q.push(tmp->right);
+            }
+            res.push_back(tmp->val);
+        }
+        return res;
+    }
+}
+ 
+ 
+ 
+class Solution {
+public:
     vector<int> res;
     int depth=INT_MIN;
     void dfs(TreeNode* root, int currDepth){
