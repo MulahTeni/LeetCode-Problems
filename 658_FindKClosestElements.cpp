@@ -51,7 +51,7 @@ public:
         if(arr.size()==k)   return arr;
         int left_index =  0;
         int right_index = arr.size()-1;
-        while(right_index - left_index != k){
+        while(right_index - left_index != k - 1){
 
             if(abs(x - arr[left_index]) < abs(x - arr[right_index]))
                 --right_index;
@@ -60,12 +60,7 @@ public:
             else
                 --right_index;
         }
-        if(abs(x - arr[left_index]) < abs(x - arr[right_index]))
-            --right_index;
-        else if(abs(x - arr[left_index]) > abs(x - arr[right_index]))
-            ++left_index;
-        else
-            --right_index;
+
         return vector<int>(arr.begin()+left_index, arr.begin()+right_index+1);
     }
 };
